@@ -1,0 +1,10 @@
+include '.config/example/classification/data/dataloaders.gin'
+
+utils.data.DataModule:
+    dataset = %DATASET
+    train_dataloader_cls = @train_dataloader/torch.utils.data.dataloader.DataLoader
+    val_dataloader_cls  = @val_dataloader/torch.utils.data.dataloader.DataLoader
+    test_dataloader_cls = @test_dataloader/torch.utils.data.dataloader.DataLoader
+
+datamodule/singleton.constructor = @utils.data.DataModule
+DATA_MODULE = @datamodule/singleton()

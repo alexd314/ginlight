@@ -1,0 +1,5 @@
+ginconf_logger/infrastructure.gin.gininfrastructure.strcat.s = [@tblogger_log_dir/singleton(), "/experiment_config.gin"]
+GINCONF_LOGFILE = @ginconf_logger/infrastructure.gin.gininfrastructure.strcat()
+infrastructure.logging.config.GinConfigLogger.outfile_path = %GINCONF_LOGFILE
+
+pytorch_lightning.trainer.trainer.Trainer.callbacks += [@infrastructure.logging.config.GinConfigLogger()]

@@ -1,0 +1,7 @@
+data_registry/singleton.constructor = @dict
+DATA_REGISTRY = @data_registry/singleton()
+
+infrastructure.registry.DataRegistryCleaner.data_registry = %DATA_REGISTRY
+REGISTRY_CLEANER = @infrastructure.registry.DataRegistryCleaner()
+
+pytorch_lightning.trainer.trainer.Trainer.callbacks += [%REGISTRY_CLEANER]

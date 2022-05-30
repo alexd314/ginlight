@@ -1,0 +1,10 @@
+utils.metrics.MetricProcessor:
+    metric_cls = @torchmetrics.Accuracy
+    stages = ['val','test']
+    data_registry = %DATA_REGISTRY
+    registry_key = 'accuracy_metric'
+
+accuracy/singleton.constructor = @utils.metrics.MetricProcessor
+ACCURACY_CORE = @accuracy/singleton()
+
+pytorch_lightning.trainer.trainer.Trainer.callbacks += [%ACCURACY_CORE]

@@ -1,0 +1,16 @@
+train_model/infrastructure.pipeline.Component:
+    input_streams = 'train_batch[0]'
+    output_streams = 'logprob'
+    core = %MODEL
+
+train_loss/infrastructure.pipeline.Component:
+    input_streams = ['logprob','train_batch[1]']
+    output_streams  = 'total_loss'
+    core = @train_loss/torch.nn.modules.loss.CrossEntropyLoss()
+
+train_pipeline/infrastructure.pipeline.Pipeline.components = [
+    @train_model/infrastructure.pipeline.Component(),
+    @train_loss/infrastructure.pipeline.Component()
+]
+train_pipeline/singleton.constructor = @train_pipeline/infrastructure.pipeline.Pipeline
+TRAIN_PIPELINE = @train_pipeline/singleton()

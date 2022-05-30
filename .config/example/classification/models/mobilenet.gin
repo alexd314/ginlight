@@ -1,0 +1,15 @@
+EXPERIMENT_TAG = 'MOBILENET'
+
+#
+NETWORK_RESOLUTION = (224,224)
+TRAIN_EPOCHS = 300
+TRAIN_BATCH_SIZE = 100
+TEST_BATCH_SIZE = 100
+VAL_BATCH_SIZE = 20
+#
+
+# model
+torchvision.models.mobilenet.mobilenet_v2.num_classes = %NUM_CLASSES
+model/singleton.constructor = @torchvision.models.mobilenet.mobilenet_v2
+
+MODEL = @model/singleton()

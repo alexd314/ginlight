@@ -1,0 +1,10 @@
+utils.logging.MetricFileLogger:
+    out_log_file = %OUT_LOG_FILE
+    data_registry = %DATA_REGISTRY
+    registry_keys = ['accuracy_metric']
+    append = True
+    flush_always = True
+    stages = ['val','test']
+    experiment_name = %EXPERIMENT_NAME
+
+pytorch_lightning.trainer.trainer.Trainer.callbacks += [@utils.logging.MetricFileLogger()]

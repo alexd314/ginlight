@@ -1,0 +1,7 @@
+# TODO: This file does not run out of the box. Just take the dependency names and install manually.
+-e git+https://github.com/alexd314/gin-config.git@8785ce4603fe45de3db426234839225fd09208a1#egg=gin_config
+pytorch-lightning==1.6.3
+torch==1.11.0+cu113
+torchaudio==0.11.0+cu113
+torchmetrics==0.8.2
+torchvision==0.12.0+cu113

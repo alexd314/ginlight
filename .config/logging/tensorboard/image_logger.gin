@@ -1,0 +1,10 @@
+train_img_logger/infrastructure.logging.lightning.TensorboardImageLogger:
+    data_registry = %DATA_REGISTRY
+    registry_path = 'train_batch[0]'
+    image_tag = 'images'
+    image_count = 4
+    step_interval = 10
+    stages = 'train'
+    random = True
+
+pytorch_lightning.trainer.trainer.Trainer.callbacks += [@train_img_logger/infrastructure.logging.lightning.TensorboardImageLogger()]

@@ -1,0 +1,4 @@
+main:
+    lightmain = @infrastructure.lightmain.LightMain()
+    trainer = @pytorch_lightning.trainer.trainer.Trainer()
+    datamodule = %DATA_MODULE

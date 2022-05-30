@@ -1,0 +1,9 @@
+pipeline_logger/infrastructure.gin.gininfrastructure.strcat.s = [@tblogger_log_dir/singleton(), "/pipelines.json"]
+PIPELINE_LOGFILE = @pipeline_logger/infrastructure.gin.gininfrastructure.strcat()
+
+pipeline_logger/infrastructure.logging.config.ObjectTreeLogger:
+    objects = [%TRAIN_PIPELINE, %VAL_PIPELINE, %TEST_PIPELINE]
+    object_names = ['TRAIN_PIPELINE','VAL_PIPELINE','TEST_PIPELINE']
+    out_file = %PIPELINE_LOGFILE
+
+pytorch_lightning.trainer.trainer.Trainer.callbacks += [@pipeline_logger/infrastructure.logging.config.ObjectTreeLogger()]

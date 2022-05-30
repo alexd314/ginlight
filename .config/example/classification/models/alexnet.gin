@@ -1,0 +1,19 @@
+EXPERIMENT_TAG = 'MODEL-001-AlexNet-CUB200'
+
+#
+NETWORK_RESOLUTION = (227,227)
+TRAIN_EPOCHS = 300
+TRAIN_BATCH_SIZE = 600
+TEST_BATCH_SIZE = 600
+VAL_BATCH_SIZE = 20
+#
+
+# model
+torchvision.models.alexnet.alexnet.num_classes = %NUM_CLASSES
+model/singleton.constructor = @torchvision.models.alexnet.alexnet
+
+MODEL = @model/singleton()
+
+# initialization
+pytorch_lightning.trainer.trainer.Trainer.callbacks += [@utils.model_init/XavierInitializer()]
+

@@ -1,0 +1,6 @@
+loss_logger/infrastructure.logging.lightning.ScalarLogger:
+    data_registry = %DATA_REGISTRY
+    metric = ['']
+    registry_key = ['*_loss']
+
+pytorch_lightning.trainer.trainer.Trainer.callbacks += [@loss_logger/infrastructure.logging.lightning.ScalarLogger()]

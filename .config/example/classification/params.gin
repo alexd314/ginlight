@@ -1,0 +1,8 @@
+CHECKPOINT_PATH = '.\\.checkpoints'
+#CUB_DATASET_PATH = enter path to dataset here, or provide via command line "--param CUB_DATASET_PATH = 'path/dataset'"
+GPU_COUNT = 1
+VALIDATION_EPOCH_INTERVAL = 1
+NUM_CLASSES = 200
+OUT_LOG_FILE = ".\\.output\\experiment_log.csv"
+EXPERIMENT_NAME = 'RESNET18-CUB200'
+

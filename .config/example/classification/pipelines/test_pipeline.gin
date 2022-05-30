@@ -1,0 +1,24 @@
+test_model/infrastructure.pipeline.Component:
+    input_streams = 'test_batch[0]'
+    output_streams = 'logprob'
+    core = %MODEL
+
+test_prob/torch.nn.modules.activation.Softmax.dim = 1
+test_prob/infrastructure.pipeline.Component:
+    input_streams = 'logprob'
+    output_streams = 'probabilities'
+    core = @test_prob/torch.nn.modules.activation.Softmax()
+
+test_accuracy/infrastructure.pipeline.Component:
+    input_streams = ['probabilities', 'val_batch[1]']
+    output_streams = None
+    core = %ACCURACY_CORE
+
+test_pipeline/infrastructure.pipeline.Pipeline.components = [
+    @test_model/infrastructure.pipeline.Component(),
+    @test_prob/infrastructure.pipeline.Component(),
+    @test_accuracy/infrastructure.pipeline.Component()
+]
+
+test_pipeline/singleton.constructor = @test_pipeline/infrastructure.pipeline.Pipeline
+TEST_PIPELINE = @test_pipeline/singleton()

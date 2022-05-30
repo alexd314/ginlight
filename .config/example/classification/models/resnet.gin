@@ -1,0 +1,16 @@
+EXPERIMENT_TAG = 'RESNET'
+
+#
+NETWORK_RESOLUTION = (224,224)
+TRAIN_EPOCHS = 300
+TRAIN_BATCH_SIZE = 200
+TEST_BATCH_SIZE = 200
+VAL_BATCH_SIZE = 200
+#
+
+# model
+torchvision.models.resnet.resnet18.num_classes = %NUM_CLASSES
+model/singleton.constructor = @torchvision.models.resnet.resnet18
+
+MODEL = @model/singleton()
+

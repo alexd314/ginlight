@@ -1,0 +1,14 @@
+infrastructure.lightmain.LightMain:
+    modules = [%MODEL]
+    optimizer_factory = %OPTIMIZER_FACTORY
+    train_pipeline = %TRAIN_PIPELINE
+    train_batch_input_keys = 'train_batch'
+    train_loss_return_keys = 'total_loss'
+    val_pipeline = %VAL_PIPELINE
+    val_batch_input_key = 'val_batch'
+    #val_return_key = 'prediction'
+    test_pipeline = %TEST_PIPELINE
+    test_batch_input_key = 'test_batch'
+    #test_return_key = 'prediction'
+    data_registry = %DATA_REGISTRY
+    global_rng_seed = 0

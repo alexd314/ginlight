@@ -1,0 +1,7 @@
+pytorch_lightning.trainer.trainer.Trainer:
+    gpus = %GPU_COUNT
+    max_epochs = %TRAIN_EPOCHS
+    check_val_every_n_epoch = %VALIDATION_EPOCH_INTERVAL
+    log_every_n_steps = 5
+    logger = %LOGGER
+

@@ -1,0 +1,5 @@
+torch.optim.lr_scheduler.ReduceLROnPlateau:
+    patience = 15
+    cooldown = 5
+
+OPTIMIZER_LR_SCHEDULER_CLASS = @torch.optim.lr_scheduler.ReduceLROnPlateau

@@ -1,0 +1,10 @@
+utils.optim.StandardOptimizerFactory:
+    optimizer_cls = %OPTIMIZER_CLASS
+    module = %MODEL
+    lr_scheduler_cls = %OPTIMIZER_LR_SCHEDULER_CLASS
+    lr_scheduler_interval = None
+    lr_scheduler_frequency = None
+    lr_scheduler_monitor_metric = None
+    singleton = True
+
+OPTIMIZER_FACTORY = @utils.optim.StandardOptimizerFactory()

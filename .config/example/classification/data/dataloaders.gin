@@ -1,0 +1,10 @@
+train_dataloader/torch.utils.data.dataloader.DataLoader:
+    batch_size = %TRAIN_BATCH_SIZE
+    shuffle = True
+val_dataloader/torch.utils.data.dataloader.DataLoader:
+    batch_size = %VAL_BATCH_SIZE
+    shuffle = False
+test_dataloader/torch.utils.data.dataloader.DataLoader:
+    batch_size = %TEST_BATCH_SIZE
+    shuffle = False
+

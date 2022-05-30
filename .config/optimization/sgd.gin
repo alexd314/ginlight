@@ -1,0 +1,5 @@
+torch.optim.sgd.SGD:
+    lr = 0.001
+    momentum = 0.9
+
+OPTIMIZER_CLASS = @torch.optim.sgd.SGD

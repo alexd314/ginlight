@@ -1,0 +1,5 @@
+torch.optim.adam.Adam:
+    lr = 0.001
+    weight_decay = 0.01
+
+OPTIMIZER_CLASS = @torch.optim.adam.Adam

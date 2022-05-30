@@ -1,0 +1,48 @@
+import examples.classification.infrastructure.ginclassification
+
+# params
+include '.config/example/classification/params.gin'
+
+# infrastructure
+include '.config/infrastructure/lightmain.gin'
+include '.config/infrastructure/main.gin'
+include '.config/infrastructure/pltrainer.gin'
+
+# checkpoint
+include '.config/checkpoint/checkpoint.gin'
+
+# optimizer
+include '.config/optimization/adam.gin'
+#include '.config/optimization/sgd.gin'
+include '.config/optimization/no_lr_scheduler.gin'
+include '.config/optimization/standard_optim_factory.gin'
+
+# data
+include '.config/example/classification/data/dataset_cub.gin'
+include '.config/example/classification/data/datamodule.gin'
+#
+
+# model
+#include '.config/example/classification/models/alexnet.gin'
+include '.config/example/classification/models/resnet.gin'
+
+# pipeline
+include '.config/example/classification/pipelines/train_pipeline.gin'
+include '.config/example/classification/pipelines/val_pipeline.gin'
+include '.config/example/classification/pipelines/test_pipeline.gin'
+
+# test metrics
+include '.config/example/classification/metrics/accuracy.gin'
+
+# logging
+include '.config/logging/tensorboard/tensorboard.gin'
+include '.config/logging/tensorboard/loss_logger.gin'
+include '.config/logging/tensorboard/image_logger.gin'
+include '.config/logging/tensorboard/metrics_logger.gin'
+
+include '.config/logging/file/ginconfig_logger.gin'
+include '.config/logging/file/pipeline_logger.gin'
+include '.config/logging/file/metrics_logger.gin'
+
+# registry - should always be placed last
+include '.config/infrastructure/registry.gin'

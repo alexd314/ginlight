@@ -1,0 +1,12 @@
+TB_LOG_DIR_PREFIX = ".logs/tb-"
+
+tblogger_log_dir/infrastructure.gin.gininfrastructure.generate_log_dir.dir_prefix = %TB_LOG_DIR_PREFIX
+tblogger_log_dir/infrastructure.gin.gininfrastructure.generate_log_dir.dir_suffix = ""
+tblogger_log_dir/singleton.constructor = @tblogger_log_dir/generate_log_dir
+
+pytorch_lightning.loggers.tensorboard.TensorBoardLogger.save_dir = @tblogger_log_dir/singleton()
+pytorch_lightning.loggers.tensorboard.TensorBoardLogger.name = %EXPERIMENT_TAG
+
+tblogger_logger/singleton.constructor = @pytorch_lightning.loggers.tensorboard.TensorBoardLogger
+
+LOGGER = @tblogger_logger/singleton()

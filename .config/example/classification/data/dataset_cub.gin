@@ -1,0 +1,29 @@
+train_transform/torchvision.transforms.RandomCrop:
+    size = %NETWORK_RESOLUTION
+    pad_if_needed = True
+
+train_transform/torchvision.transforms.Compose:
+    transforms = [
+        @train_transform/torchvision.transforms.RandomCrop(),
+        @torchvision.transforms.ToTensor()
+    ]
+
+
+
+test_transform/torchvision.transforms.CenterCrop:
+    size = %NETWORK_RESOLUTION
+
+test_transform/torchvision.transforms.Compose:
+    transforms = [
+        @test_transform/torchvision.transforms.CenterCrop(),
+        @torchvision.transforms.ToTensor()
+    ]
+
+examples.classification.data.CUBDataset.CUBDataset:
+    path_to_dataset = %CUB_DATASET_PATH
+    train_transform = @train_transform/torchvision.transforms.Compose()
+    test_transform = @test_transform/torchvision.transforms.Compose()
+
+
+dataset/singleton.constructor = @examples.classification.data.CUBDataset.CUBDataset
+DATASET = @dataset/singleton()
